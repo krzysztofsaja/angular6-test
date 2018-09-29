@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+@mixin anms-signup-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .sign-up-form {
+    background-color: rgba(mat-contrast($primary, 500), 0.3);
+  }
+}

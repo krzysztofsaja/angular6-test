@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Reject request</h2>
+<mat-dialog-content>
+  <p>Do you want to reject the request from <br>
+    {{data.firstName}} {{data.lastName}} {{data.email}} ?</p>
+  <mat-form-field>
+    <input #reason="ngModel" matInput name="reason" placeholder="Rejection reason" type="text" [(ngModel)]="rejectionReason" required>
+    <mat-error *ngIf="!reason.valid">Field is required</mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" [disabled]="!reason.valid" [mat-dialog-close]="reason.value">Yes</button>
+  <button mat-button [mat-dialog-close]="false">No</button>
+</mat-dialog-actions>

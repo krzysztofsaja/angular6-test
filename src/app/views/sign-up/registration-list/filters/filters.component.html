@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-content class="d-flex justify-content-between align-items-center">
+    <mat-form-field class="search-term">
+      <input #search="ngModel" (ngModelChange)="onSearch($event)" matInput name="search"
+             placeholder="{{ 'anms.signUp.table.filter.search' | translate }} " type="search" [(ngModel)]="searchTerm">
+    </mat-form-field>
+    <div class="toggles">
+      <mat-slide-toggle
+        color="primary"
+        (change)="toggleIsAccepted($event)"
+        [checked]="isAccepted$ | async">
+        {{ 'anms.signUp.table.filter.accepted' | translate }}
+      </mat-slide-toggle>
+      <mat-slide-toggle
+        color="primary"
+        (change)="toggleIsRejected($event)"
+        [checked]="isRejected$ | async">
+        {{ 'anms.signUp.table.filter.rejected' | translate }}
+      </mat-slide-toggle>
+      <mat-slide-toggle
+        (change)="toggleIsPending($event)"
+        color="primary"
+        [checked]="isPending$ | async">
+        {{ 'anms.signUp.table.filter.pending' | translate }}
+      </mat-slide-toggle>
+    </div>
+  </mat-card-content>
+</mat-card>

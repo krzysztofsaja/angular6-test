@@ -1,0 +1,49 @@
+<mat-toolbar>{{ 'anms.signUp.table.title' | translate }}</mat-toolbar>
+<filters-component></filters-component>
+
+<table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> {{ 'anms.signUp.table.header.firstName' | translate }} </th>
+    <td mat-cell *matCellDef="let element" class="truncate"> {{element.firstName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> {{ 'anms.signUp.table.header.lastName' | translate }}</th>
+    <td mat-cell *matCellDef="let element" class="truncate"> {{element.lastName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> {{ 'anms.signUp.table.header.email' | translate }}</th>
+    <td mat-cell *matCellDef="let element" class="truncate"> {{element.email}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="idNumber">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> {{ 'anms.signUp.table.header.idNumber' | translate }}</th>
+    <td mat-cell *matCellDef="let element" class="truncate"> {{element.idNumber}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="city">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> {{ 'anms.signUp.table.header.city' | translate }}</th>
+    <td mat-cell *matCellDef="let element" class="truncate"> {{element.city}}</td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> {{ 'anms.signUp.table.header.actions' | translate }}</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="actions d-flex align-items-center justify-content-end">
+        <button (click)="onAccept(element)" mat-icon-button matTooltip="Approve User">
+          <mat-icon fontSet="fas" fontIcon="fa-check"></mat-icon>
+        </button>
+        <button (click)="onReject(element)" mat-icon-button matTooltip="Reject User">
+          <mat-icon color="warn" fontSet="fas" fontIcon="fa-trash-alt"></mat-icon>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
